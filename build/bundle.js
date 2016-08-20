@@ -70,6 +70,10 @@
 
 	var _HighOrder2 = _interopRequireDefault(_HighOrder);
 
+	var _FlexComponent = __webpack_require__(179);
+
+	var _FlexComponent2 = _interopRequireDefault(_FlexComponent);
+
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 	_reactDom2.default.render(_react2.default.createElement(
@@ -78,7 +82,8 @@
 	  _react2.default.createElement(_App2.default, null),
 	  _react2.default.createElement(_App4.default, null),
 	  _react2.default.createElement(_Slider2.default, null),
-	  _react2.default.createElement(_HighOrder2.default, null)
+	  _react2.default.createElement(_HighOrder2.default, null),
+	  _react2.default.createElement(_FlexComponent2.default, null)
 	), document.getElementById('app'));
 
 /***/ },
@@ -21864,6 +21869,150 @@
 	}(_react2.default.Component);
 
 	exports.default = HighOrder;
+
+/***/ },
+/* 179 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+
+	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+	var _react = __webpack_require__(1);
+
+	var _react2 = _interopRequireDefault(_react);
+
+	var _reactDom = __webpack_require__(35);
+
+	var _reactDom2 = _interopRequireDefault(_reactDom);
+
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+	// Class component that can have states
+	var FlexComponent = function (_React$Component) {
+	  _inherits(FlexComponent, _React$Component);
+
+	  function FlexComponent() {
+	    _classCallCheck(this, FlexComponent);
+
+	    var _this = _possibleConstructorReturn(this, Object.getPrototypeOf(FlexComponent).call(this));
+
+	    _this.state = {
+	      rangeInp: 0,
+	      numInp: 0
+	    };
+	    _this.update = _this.update.bind(_this);
+	    return _this;
+	  }
+
+	  _createClass(FlexComponent, [{
+	    key: 'update',
+	    value: function update(e) {
+	      this.setState({
+	        rangeInp: _reactDom2.default.findDOMNode(this.refs.rangeInp.refs.inp).value,
+	        numInp: _reactDom2.default.findDOMNode(this.refs.numInp.refs.inp).value
+	      });
+	    }
+	  }, {
+	    key: 'render',
+	    value: function render() {
+	      return _react2.default.createElement(
+	        'div',
+	        null,
+	        _react2.default.createElement(NumInput, {
+	          ref: 'rangeInp',
+	          min: 0,
+	          max: 255,
+	          step: 1,
+	          val: +this.state.rangeInp,
+	          label: 'Red',
+	          update: this.update
+	        }),
+	        _react2.default.createElement(NumInput, {
+	          ref: 'numInp',
+	          min: 0,
+	          max: 255,
+	          step: 1,
+	          type: 'number',
+	          val: +this.state.numInp,
+	          label: 'Red',
+	          update: this.update
+	        })
+	      );
+	    }
+	  }]);
+
+	  return FlexComponent;
+	}(_react2.default.Component);
+
+	var NumInput = function (_React$Component2) {
+	  _inherits(NumInput, _React$Component2);
+
+	  function NumInput() {
+	    _classCallCheck(this, NumInput);
+
+	    return _possibleConstructorReturn(this, Object.getPrototypeOf(NumInput).call(this));
+	  }
+
+	  _createClass(NumInput, [{
+	    key: 'render',
+	    value: function render() {
+	      var label = this.props.label !== '' ? _react2.default.createElement(
+	        'label',
+	        null,
+	        ' ',
+	        this.props.label,
+	        ' | ',
+	        this.props.val
+	      ) : '';
+	      return _react2.default.createElement(
+	        'div',
+	        null,
+	        _react2.default.createElement('input', { ref: 'inp',
+	          type: this.props.type,
+	          min: this.props.min,
+	          max: this.props.max,
+	          step: this.props.step,
+	          defaultValue: this.props.val,
+	          onChange: this.props.update }),
+	        label
+	      );
+	    }
+	  }]);
+
+	  return NumInput;
+	}(_react2.default.Component);
+
+	NumInput.propTypes = {
+	  min: _react2.default.PropTypes.number,
+	  max: _react2.default.PropTypes.number,
+	  step: _react2.default.PropTypes.number,
+	  val: _react2.default.PropTypes.number,
+	  label: _react2.default.PropTypes.string,
+	  update: _react2.default.PropTypes.func.isRequired,
+	  type: _react2.default.PropTypes.oneOf(['number', 'range'])
+	};
+
+	NumInput.defaultProps = {
+	  min: 0,
+	  max: 0,
+	  step: 1,
+	  val: 0,
+	  label: '',
+	  type: 'range'
+	};
+
+	exports.default = FlexComponent;
 
 /***/ }
 /******/ ]);
