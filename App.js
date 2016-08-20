@@ -6,15 +6,16 @@ class App extends React.Component {
   constructor(){
     super();
     this.state = {txt: 'This is the state txt'}
+    this.updatetxt = this.updatetxt.bind(this)
   }
-  update(e){
+  updatetxt(e){
     this.setState({txt: e.target.value})
   }
   render() {
     return (
       <div>
         <input type='text'
-          onChange={this.update.bind(this)}/>
+          onChange={this.updatetxt}/>
         <h1>
           {this.state.txt} , {this.props.cat}
         </h1>
