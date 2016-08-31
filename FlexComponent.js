@@ -27,7 +27,7 @@ class FlexComponent extends React.Component {
           max={255}
           step={1}
           val={+this.state.rangeInp}
-          label="Red"
+          label="Select a number"
           update={this.update}
         />
 
@@ -38,7 +38,7 @@ class FlexComponent extends React.Component {
           step={1}
           type='number'
           val={+this.state.numInp}
-          label="Red"
+          label="Current number"
           update={this.update}
         />
 

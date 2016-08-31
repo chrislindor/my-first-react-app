@@ -14,8 +14,8 @@ class App2 extends React.Component {
   render() {
     return (
       <div>
-        <Widget txt={this.state.txt} updatetxt ={this.updatetxt} />
-        <Widget txt={this.state.txt} updatetxt ={this.updatetxt} />
+        <Widget txt={this.state.txt} update ={this.updatetxt} />
+        <Widget txt={this.state.txt} update ={this.updatetxt} />
       </div>
     );
   }
@@ -25,7 +25,7 @@ const Widget = (props) => {
   return (
     <div>
     <input type='text'
-      onChange={props.updatetxt}/>
+      onChange={props.update}/>
     <h1>
       {props.txt}
     </h1>

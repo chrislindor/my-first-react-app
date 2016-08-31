@@ -21620,8 +21620,8 @@
 	      return _react2.default.createElement(
 	        'div',
 	        null,
-	        _react2.default.createElement(Widget, { txt: this.state.txt, updatetxt: this.updatetxt }),
-	        _react2.default.createElement(Widget, { txt: this.state.txt, updatetxt: this.updatetxt })
+	        _react2.default.createElement(Widget, { txt: this.state.txt, update: this.updatetxt }),
+	        _react2.default.createElement(Widget, { txt: this.state.txt, update: this.updatetxt })
 	      );
 	    }
 	  }]);
@@ -21634,7 +21634,7 @@
 	    'div',
 	    null,
 	    _react2.default.createElement('input', { type: 'text',
-	      onChange: props.updatetxt }),
+	      onChange: props.update }),
 	    _react2.default.createElement(
 	      'h1',
 	      null,
@@ -21935,7 +21935,7 @@
 	          max: 255,
 	          step: 1,
 	          val: +this.state.rangeInp,
-	          label: 'Red',
+	          label: 'Select a number',
 	          update: this.update
 	        }),
 	        _react2.default.createElement(NumInput, {
@@ -21945,7 +21945,7 @@
 	          step: 1,
 	          type: 'number',
 	          val: +this.state.numInp,
-	          label: 'Red',
+	          label: 'Current number',
 	          update: this.update
 	        })
 	      );
